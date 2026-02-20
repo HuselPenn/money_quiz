@@ -614,7 +614,7 @@ var results = {
 var current = 0;
 var scores = { A: 0, B: 0, C: 0, D: 0, E: 0 };
 var selectedType = null;
-var history = [];
+var answerLog = [];
 
 function startQuiz() {
   document.getElementById('intro').style.display = 'none';
@@ -669,7 +669,7 @@ function selectOption(el, type) {
 function nextQuestion() {
   if (!selectedType) return;
   scores[selectedType]++;
-  history.push(selectedType);
+  answerLog.push(selectedType);
   current++;
   if (current >= questions.length) {
     showLoading();
@@ -680,7 +680,7 @@ function nextQuestion() {
 
 function prevQuestion() {
   if (current <= 0) return;
-  var last = history.pop();
+  var last = answerLog.pop();
   if (last) scores[last]--;
   current--;
   renderQuestion();
@@ -745,7 +745,7 @@ function retryQuiz() {
   current = 0;
   scores = { A: 0, B: 0, C: 0, D: 0, E: 0 };
   selectedType = null;
-  history = [];
+  answerLog = [];
   document.getElementById('result').style.display = 'none';
   document.getElementById('result').innerHTML = '';
   document.getElementById('intro').style.display = 'block';
