@@ -241,14 +241,11 @@
     background: white;
   }
 
-  /* btn-row: hidden by default, shown after selecting */
   .btn-row {
-    display: none;
+    display: flex;
     gap: 10px;
     margin-top: 20px;
   }
-
-  .btn-row.visible { display: flex; }
 
   .btn-prev {
     padding: 16px 18px;
@@ -276,6 +273,14 @@
     cursor: pointer;
     letter-spacing: 0.08em;
     -webkit-tap-highlight-color: transparent;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s ease;
+  }
+
+  .btn-next.visible {
+    opacity: 1;
+    pointer-events: all;
   }
 
   /* ===== LOADING ===== */
@@ -644,13 +649,17 @@ function renderQuestion() {
       + '</button>';
   }
 
+  // Q2+: btn-row always shown so prev button is visible; next button hidden until selection
+  // Q1: btn-row hidden until selection (no prev button)
+  var btnRowStyle = showPrev ? 'display:flex' : 'display:none';
+
   var html = '<div class="question-card">'
     + '<div class="q-number">问题 ' + (current + 1) + '</div>'
     + '<div class="q-text">' + q.text + '</div>'
     + '<div class="options">' + optionsHtml + '</div>'
-    + '<div class="btn-row" id="btnRow">'
+    + '<div class="btn-row" id="btnRow" style="' + btnRowStyle + '">'
     + prevBtn
-    + '<button class="btn-next" onclick="nextQuestion()">' + nextLabel + '</button>'
+    + '<button class="btn-next" id="btnNext" onclick="nextQuestion()">' + nextLabel + '</button>'
     + '</div>'
     + '</div>';
 
@@ -663,7 +672,8 @@ function selectOption(el, type) {
   for (var i = 0; i < opts.length; i++) opts[i].classList.remove('selected');
   el.classList.add('selected');
   selectedType = type;
-  document.getElementById('btnRow').classList.add('visible');
+  document.getElementById('btnRow').style.display = 'flex';
+  document.getElementById('btnNext').classList.add('visible');
 }
 
 function nextQuestion() {
