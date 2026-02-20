@@ -12,7 +12,6 @@
     --gold-light: #e8d5a3;
     --cream: #faf6ee;
     --paper: #f2ead8;
-    --red: #c0392b;
     --muted: #7a6a50;
     --shadow: rgba(26,18,8,0.12);
   }
@@ -27,12 +26,11 @@
     overflow-x: hidden;
   }
 
-  /* Background texture */
   body::before {
     content: '';
     position: fixed;
     inset: 0;
-    background-image: 
+    background-image:
       radial-gradient(ellipse at 20% 20%, rgba(201,168,76,0.08) 0%, transparent 60%),
       radial-gradient(ellipse at 80% 80%, rgba(192,57,43,0.05) 0%, transparent 60%);
     pointer-events: none;
@@ -42,38 +40,22 @@
   .container {
     max-width: 680px;
     margin: 0 auto;
-    padding: 28px 16px 140px;
+    padding: 28px 16px 60px;
     position: relative;
     z-index: 1;
   }
 
-  /* ===== INTRO SCREEN ===== */
-  #intro {
-    text-align: center;
-    animation: fadeUp 0.8s ease both;
-  }
+  /* ===== INTRO ===== */
+  #intro { text-align: center; animation: fadeUp 0.8s ease both; }
 
-  .coin-icon {
-    width: 80px;
-    height: 80px;
-    margin: 0 auto 32px;
-    position: relative;
-  }
-
-  .coin-icon svg {
-    width: 100%;
-    height: 100%;
-  }
+  .coin-icon { width: 80px; height: 80px; margin: 0 auto 32px; }
 
   @keyframes spin {
     0% { transform: rotateY(0deg); }
     100% { transform: rotateY(360deg); }
   }
 
-  .coin-spin {
-    animation: spin 4s linear infinite;
-    transform-style: preserve-3d;
-  }
+  .coin-spin { animation: spin 4s linear infinite; transform-style: preserve-3d; width: 100%; height: 100%; }
 
   h1 {
     font-family: 'Noto Serif SC', serif;
@@ -85,9 +67,7 @@
     letter-spacing: 0.02em;
   }
 
-  h1 span {
-    color: var(--gold);
-  }
+  h1 span { color: var(--gold); }
 
   .subtitle {
     font-size: 16px;
@@ -131,11 +111,7 @@
     line-height: 1.4;
   }
 
-  .type-chip .emoji {
-    display: block;
-    font-size: 20px;
-    margin-bottom: 4px;
-  }
+  .type-chip .emoji { display: block; font-size: 20px; margin-bottom: 4px; }
 
   .btn-start {
     display: block;
@@ -152,36 +128,22 @@
     border: none;
     cursor: pointer;
     letter-spacing: 0.1em;
-    transition: all 0.25s ease;
-    position: relative;
-    overflow: hidden;
     -webkit-tap-highlight-color: transparent;
   }
 
-  .btn-start::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(135deg, rgba(201,168,76,0.3), transparent);
-    opacity: 0;
-    transition: opacity 0.25s;
+  .meta { margin-top: 20px; font-size: 12px; color: var(--muted); }
+
+  .deco-border { border: 1px solid var(--gold-light); border-radius: 16px; padding: 3px; margin-bottom: 32px; }
+
+  .deco-inner {
+    border: 1px solid rgba(201,168,76,0.3);
+    border-radius: 13px;
+    padding: 40px 20px;
+    text-align: center;
+    background: linear-gradient(135deg, white, #fffdf7);
   }
 
-  .btn-start:hover {
-    background: #2d2010;
-    transform: translateY(-2px);
-    box-shadow: 0 8px 24px var(--shadow);
-  }
-
-  .btn-start:hover::after { opacity: 1; }
-
-  .meta {
-    margin-top: 20px;
-    font-size: 12px;
-    color: var(--muted);
-  }
-
-  /* ===== QUIZ SCREEN ===== */
+  /* ===== QUIZ ===== */
   #quiz { display: none; }
 
   .progress-bar {
@@ -199,13 +161,7 @@
     transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
-  .q-counter {
-    font-size: 13px;
-    color: var(--muted);
-    text-align: right;
-    margin-bottom: 16px;
-    font-weight: 300;
-  }
+  .q-counter { font-size: 13px; color: var(--muted); text-align: right; margin-bottom: 16px; font-weight: 300; }
 
   .question-card {
     background: white;
@@ -221,14 +177,7 @@
     to { opacity: 1; transform: translateY(0); }
   }
 
-  .q-number {
-    font-size: 12px;
-    font-weight: 500;
-    letter-spacing: 0.15em;
-    color: var(--gold);
-    text-transform: uppercase;
-    margin-bottom: 12px;
-  }
+  .q-number { font-size: 12px; font-weight: 500; letter-spacing: 0.15em; color: var(--gold); text-transform: uppercase; margin-bottom: 12px; }
 
   .q-text {
     font-family: 'Noto Serif SC', serif;
@@ -239,21 +188,17 @@
     margin-bottom: 24px;
   }
 
-  .options {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
+  .options { display: flex; flex-direction: column; gap: 10px; }
 
   .option {
     display: flex;
     align-items: flex-start;
     gap: 14px;
-    padding: 16px 16px;
+    padding: 16px;
     border: 1.5px solid #e8e0d0;
     border-radius: 12px;
     cursor: pointer;
-    transition: all 0.2s ease;
+    transition: border-color 0.2s, background 0.2s;
     background: var(--cream);
     text-align: left;
     font-family: 'Noto Sans SC', sans-serif;
@@ -265,11 +210,7 @@
     min-height: 56px;
   }
 
-  .option:hover {
-    border-color: var(--gold);
-    background: #fffdf5;
-    transform: translateX(4px);
-  }
+  .option:active { background: #fffdf5; }
 
   .option.selected {
     border-color: var(--gold);
@@ -290,10 +231,7 @@
     justify-content: center;
   }
 
-  .option.selected .option-dot {
-    border-color: var(--gold);
-    background: var(--gold);
-  }
+  .option.selected .option-dot { border-color: var(--gold); background: var(--gold); }
 
   .option.selected .option-dot::after {
     content: '';
@@ -303,15 +241,31 @@
     background: white;
   }
 
+  /* btn-row: hidden by default, shown after selecting */
+  .btn-row {
+    display: none;
+    gap: 10px;
+    margin-top: 20px;
+  }
+
+  .btn-row.visible { display: flex; }
+
+  .btn-prev {
+    padding: 16px 18px;
+    background: transparent;
+    color: var(--muted);
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 15px;
+    border: 1.5px solid #d4c5a9;
+    border-radius: 12px;
+    cursor: pointer;
+    white-space: nowrap;
+    -webkit-tap-highlight-color: transparent;
+  }
+
   .btn-next {
-    display: block;
-    width: calc(100% - 32px);
-    max-width: 648px;
-    position: fixed;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    padding: 17px;
+    flex: 1;
+    padding: 16px;
     background: var(--ink);
     color: var(--cream);
     font-family: 'Noto Serif SC', serif;
@@ -321,37 +275,16 @@
     border-radius: 12px;
     cursor: pointer;
     letter-spacing: 0.08em;
-    transition: opacity 0.3s ease, transform 0.3s ease;
-    opacity: 0;
-    pointer-events: none;
-    box-shadow: 0 4px 24px rgba(26,18,8,0.25);
-    z-index: 100;
     -webkit-tap-highlight-color: transparent;
   }
 
-  .btn-next.visible {
-    opacity: 1;
-    pointer-events: all;
-  }
-
   /* ===== LOADING ===== */
-  #loading {
-    display: none;
-    text-align: center;
-    padding: 80px 0;
-  }
+  #loading { display: none; text-align: center; padding: 80px 0; }
 
-  .loading-coins {
-    display: flex;
-    justify-content: center;
-    gap: 8px;
-    margin-bottom: 32px;
-  }
+  .loading-coins { display: flex; justify-content: center; gap: 8px; margin-bottom: 32px; }
 
   .loading-coin {
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
+    width: 12px; height: 12px; border-radius: 50%;
     background: var(--gold);
     animation: bounce 1.2s ease infinite;
   }
@@ -364,25 +297,15 @@
     40% { transform: translateY(-16px); opacity: 1; }
   }
 
-  .loading-text {
-    font-family: 'Noto Serif SC', serif;
-    font-size: 16px;
-    color: var(--muted);
-  }
+  .loading-text { font-family: 'Noto Serif SC', serif; font-size: 16px; color: var(--muted); }
 
-  /* ===== RESULT SCREEN ===== */
+  /* ===== RESULT ===== */
   #result { display: none; }
 
-  .result-header {
-    text-align: center;
-    margin-bottom: 32px;
-    animation: fadeUp 0.6s ease both;
-  }
+  .result-header { text-align: center; margin-bottom: 24px; animation: fadeUp 0.6s ease both; }
 
   .result-emoji {
-    font-size: 64px;
-    display: block;
-    margin-bottom: 16px;
+    font-size: 64px; display: block; margin-bottom: 16px;
     animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.2s both;
   }
 
@@ -391,22 +314,9 @@
     to { transform: scale(1); opacity: 1; }
   }
 
-  .result-label {
-    font-size: 12px;
-    letter-spacing: 0.2em;
-    color: var(--gold);
-    font-weight: 500;
-    margin-bottom: 8px;
-    text-transform: uppercase;
-  }
+  .result-label { font-size: 12px; letter-spacing: 0.2em; color: var(--gold); font-weight: 500; margin-bottom: 8px; text-transform: uppercase; }
 
-  .result-title {
-    font-family: 'Noto Serif SC', serif;
-    font-size: 28px;
-    font-weight: 700;
-    color: var(--ink);
-    margin-bottom: 8px;
-  }
+  .result-title { font-family: 'Noto Serif SC', serif; font-size: clamp(24px, 6vw, 28px); font-weight: 700; color: var(--ink); margin-bottom: 8px; }
 
   .result-card {
     background: white;
@@ -418,72 +328,19 @@
     animation: fadeUp 0.6s ease 0.2s both;
   }
 
-  .result-card h3 {
-    font-family: 'Noto Serif SC', serif;
-    font-size: 14px;
-    font-weight: 600;
-    color: var(--gold);
-    margin-bottom: 10px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
+  .result-card h3 { font-family: 'Noto Serif SC', serif; font-size: 14px; font-weight: 600; color: var(--gold); margin-bottom: 10px; }
 
-  .result-card p {
-    font-size: 15px;
-    line-height: 1.9;
-    color: #4a3e28;
-  }
+  .result-card p { font-size: 15px; line-height: 1.9; color: #4a3e28; }
 
-  .traits {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-top: 16px;
-  }
+  .traits { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
 
-  .trait {
-    background: var(--paper);
-    border: 1px solid var(--gold-light);
-    border-radius: 20px;
-    padding: 5px 14px;
-    font-size: 12px;
-    color: var(--muted);
-  }
+  .trait { background: var(--paper); border: 1px solid var(--gold-light); border-radius: 20px; padding: 5px 14px; font-size: 12px; color: var(--muted); }
 
-  .score-bar-section {
-    animation: fadeUp 0.6s ease 0.3s both;
-  }
+  .score-row { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
 
-  .score-bar-section h3 {
-    font-family: 'Noto Serif SC', serif;
-    font-size: 14px;
-    color: var(--muted);
-    margin-bottom: 16px;
-  }
+  .score-label { font-size: 12px; color: var(--muted); width: 60px; flex-shrink: 0; text-align: right; }
 
-  .score-row {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin-bottom: 10px;
-  }
-
-  .score-label {
-    font-size: 12px;
-    color: var(--muted);
-    width: 60px;
-    flex-shrink: 0;
-    text-align: right;
-  }
-
-  .score-track {
-    flex: 1;
-    height: 6px;
-    background: #ede5d4;
-    border-radius: 3px;
-    overflow: hidden;
-  }
+  .score-track { flex: 1; height: 6px; background: #ede5d4; border-radius: 3px; overflow: hidden; }
 
   .score-fill {
     height: 100%;
@@ -493,97 +350,29 @@
     transition: width 1s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
-  .score-fill.dominant {
-    background: linear-gradient(to right, #e8b84b, #c9a84c);
-  }
+  .score-fill.dominant { background: linear-gradient(to right, #e8b84b, #c9a84c); }
 
-  .score-num {
-    font-size: 12px;
-    color: var(--muted);
-    width: 24px;
-    text-align: right;
-  }
+  .score-num { font-size: 12px; color: var(--muted); width: 24px; text-align: right; }
 
   .btn-retry {
-    display: block;
-    width: 100%;
-    margin-top: 24px;
-    padding: 16px;
-    background: transparent;
-    color: var(--muted);
-    font-family: 'Noto Sans SC', sans-serif;
-    font-size: 15px;
-    border: 1.5px solid #d4c5a9;
-    border-radius: 12px;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    animation: fadeUp 0.6s ease 0.5s both;
-    -webkit-tap-highlight-color: transparent;
+    display: block; width: 100%; margin-top: 24px; padding: 16px;
+    background: transparent; color: var(--muted);
+    font-family: 'Noto Sans SC', sans-serif; font-size: 15px;
+    border: 1.5px solid #d4c5a9; border-radius: 12px;
+    cursor: pointer; -webkit-tap-highlight-color: transparent;
   }
 
-  .btn-retry:hover {
-    border-color: var(--gold);
-    color: var(--ink);
-  }
-
-  .share-hint {
-    text-align: center;
-    font-size: 12px;
-    color: var(--muted);
-    margin-top: 16px;
-    animation: fadeUp 0.6s ease 0.6s both;
-  }
-
-  .option:active {
-    transform: scale(0.98);
-    background: #fffdf5;
-  }
-
-  .btn-start:active, .btn-next:active, .btn-retry:active {
-    transform: scale(0.97) translateX(-50%);
-    opacity: 0.9;
-  }
-
-  .btn-start:active {
-    transform: scale(0.97);
-  }
-
-  /* Safe area for iPhone */
-  .btn-next {
-    padding-bottom: max(17px, env(safe-area-inset-bottom));
-  }
+  .share-hint { text-align: center; font-size: 12px; color: var(--muted); margin-top: 16px; }
 
   @media (max-width: 480px) {
-    .deco-inner {
-      padding: 28px 20px;
-    }
-    .type-chip {
-      font-size: 10px;
-      padding: 8px 2px;
-    }
-    .result-title {
-      font-size: 24px;
-    }
-  }
-    border: 1px solid var(--gold-light);
-    border-radius: 16px;
-    padding: 3px;
-    margin-bottom: 32px;
-  }
-
-  .deco-inner {
-    border: 1px solid rgba(201,168,76,0.3);
-    border-radius: 13px;
-    padding: 40px 28px;
-    text-align: center;
-    background: linear-gradient(135deg, white, #fffdf7);
+    .deco-inner { padding: 28px 16px; }
+    .type-chip { font-size: 10px; padding: 8px 2px; }
   }
 </style>
 </head>
 <body>
 <div class="container">
 
-  <!-- INTRO -->
   <div id="intro">
     <div class="deco-border">
       <div class="deco-inner">
@@ -595,16 +384,9 @@
             <text x="40" y="47" text-anchor="middle" font-size="22" fill="#c9a84c" font-family="serif">￥</text>
           </svg>
         </div>
-
         <h1>你和钱的关系<br>是哪种<span>类型</span>？</h1>
-
         <div class="divider">✦</div>
-
-        <p class="subtitle">
-          15道题，揭示你最深层的金钱心理<br>
-          不是测你有没有钱，是测你和钱之间的关系
-        </p>
-
+        <p class="subtitle">15道题，揭示你最深层的金钱心理<br>不是测你有没有钱，是测你和钱之间的关系</p>
         <div class="type-preview">
           <div class="type-chip"><span class="emoji">😰</span>焦虑囤积</div>
           <div class="type-chip"><span class="emoji">🙈</span>逃避回避</div>
@@ -612,24 +394,18 @@
           <div class="type-chip"><span class="emoji">📊</span>掌控完美</div>
           <div class="type-chip"><span class="emoji">☯️</span>健康平衡</div>
         </div>
-
         <button class="btn-start" onclick="startQuiz()">开始测试</button>
-
         <p class="meta">约3分钟 · 15道题 · 结果仅供参考</p>
       </div>
     </div>
   </div>
 
-  <!-- QUIZ -->
   <div id="quiz">
-    <div class="progress-bar">
-      <div class="progress-fill" id="progressFill"></div>
-    </div>
+    <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
     <div class="q-counter" id="qCounter"></div>
     <div id="questionContainer"></div>
   </div>
 
-  <!-- LOADING -->
   <div id="loading">
     <div class="loading-coins">
       <div class="loading-coin"></div>
@@ -639,13 +415,12 @@
     <p class="loading-text">正在分析你的金钱人格…</p>
   </div>
 
-  <!-- RESULT -->
   <div id="result"></div>
 
 </div>
 
 <script>
-const questions = [
+var questions = [
   {
     text: "发工资的第一件事是？",
     options: [
@@ -798,47 +573,37 @@ const questions = [
   }
 ];
 
-const results = {
+var results = {
   A: {
-    emoji: "😰",
-    label: "金钱人格",
-    title: "焦虑囤积型",
+    emoji: "😰", label: "金钱人格", title: "焦虑囤积型",
     core: "你把钱等同于安全感。存款数字是你的情绪锚点，少了就会恐慌。你不是贪婪，你只是太害怕失控。",
     pattern: "表面上你很会存钱，但内心并不因此快乐。钱存了却消耗了你大量的精力——你总在担心，总在计划最坏的情况。这种焦虑很可能来自早年的匮乏感或不安全感，和现在账户里有多少钱无关。",
     advice: "试着问自己：账户里有多少钱，我才会感到安全？如果答案是「再多一点」，那说明问题不在数字上。",
     traits: ["舍不得花钱", "容易焦虑", "储蓄高手", "难以享受当下", "对未来过度担忧"]
   },
   B: {
-    emoji: "🙈",
-    label: "金钱人格",
-    title: "逃避回避型",
+    emoji: "🙈", label: "金钱人格", title: "逃避回避型",
     core: "你和钱的关系里有一堵墙。不是没能力，是不想面对。账单、余额、财务计划——能躲就躲。",
     pattern: "这不是懒，而是一种心理防御。面对钱让你感到焦虑或无力，所以你选择假装它不存在。这种模式会在不知不觉中积累出很多隐患，因为问题不会因为你不看就消失。",
     advice: "先从最小的一步开始：今天只看一次账户余额，不做任何评判，只是看。",
     traits: ["回避财务信息", "容易拖延", "感性消费", "财务不透明", "内心有恐惧感"]
   },
   C: {
-    emoji: "🎉",
-    label: "金钱人格",
-    title: "及时行乐型",
+    emoji: "🎉", label: "金钱人格", title: "及时行乐型",
     core: "你相信钱是用来花的，活在当下是真实的。你的消费里有很多快乐，但也有焦虑在某个角落等着你。",
     pattern: "你对钱不执着，这是优点。但「今朝有酒今朝醉」的背后，常常是对未来的某种逃避。你享受消费带来的当下满足，但很少去思考钱和自由之间的关系。",
     advice: "不是要你变成节省的人，而是问：你未来想要的生活，需要多少钱来支撑？从这里倒推。",
     traits: ["享受消费", "情绪价值优先", "活在当下", "冲动消费", "储蓄执行力弱"]
   },
   D: {
-    emoji: "📊",
-    label: "金钱人格",
-    title: "掌控完美型",
+    emoji: "📊", label: "金钱人格", title: "掌控完美型",
     core: "你用掌控钱来掌控人生。记账、预算、优化——这是你的语言。但有时候，你花在「管钱」上的精力，比钱本身更值钱。",
     pattern: "你的财务素养很高，但完美主义让你对每一笔钱都有过多情绪投入。一旦计划偏离就会自责，花钱之后要评估，不断优化让你疲惫却停不下来。",
     advice: "给自己设一个「免评判消费区」，每月留出一笔钱，花了不需要复盘。",
     traits: ["财务素养高", "执行力强", "容易焦虑", "对自己严苛", "难以放松"]
   },
   E: {
-    emoji: "☯️",
-    label: "金钱人格",
-    title: "健康平衡型",
+    emoji: "☯️", label: "金钱人格", title: "健康平衡型",
     core: "你和钱的关系比较健康。钱对你来说是工具，不是焦虑的来源，也不是身份的证明。",
     pattern: "你对钱有清醒的认知，既不过度执着也不逃避。能存钱，也能花钱，不会因为消费感到罪恶，也不会因为存钱感到委屈。这是多数人很难做到的状态。",
     advice: "你的基础很好。可以在这个基础上进一步思考：钱能帮你实现什么样的生活？把目标说得更具体一些。",
@@ -846,9 +611,10 @@ const results = {
   }
 };
 
-let current = 0;
-let scores = { A: 0, B: 0, C: 0, D: 0, E: 0 };
-let selected = null;
+var current = 0;
+var scores = { A: 0, B: 0, C: 0, D: 0, E: 0 };
+var selectedType = null;
+var history = [];
 
 function startQuiz() {
   document.getElementById('intro').style.display = 'none';
@@ -857,57 +623,67 @@ function startQuiz() {
 }
 
 function renderQuestion() {
-  selected = null;
-  const q = questions[current];
-  const total = questions.length;
-  
-  document.getElementById('progressFill').style.width = `${(current / total) * 100}%`;
-  document.getElementById('qCounter').textContent = `${current + 1} / ${total}`;
+  selectedType = null;
+  var q = questions[current];
+  var total = questions.length;
+  var showPrev = current > 0;
+  var isLast = current === total - 1;
 
-  const html = `
-    <div class="question-card">
-      <div class="q-number">问题 ${current + 1}</div>
-      <div class="q-text">${q.text}</div>
-      <div class="options">
-        ${q.options.map((opt, i) => `
-          <button class="option" onclick="selectOption(this, '${opt.type}')">
-            <span class="option-dot"></span>
-            <span>${opt.text}</span>
-          </button>
-        `).join('')}
-      </div>
-      <button class="btn-next" id="btnNext" onclick="nextQuestion()">
-        ${current === total - 1 ? '查看结果 →' : '下一题 →'}
-      </button>
-    </div>
-  `;
-  
+  document.getElementById('progressFill').style.width = ((current / total) * 100) + '%';
+  document.getElementById('qCounter').textContent = (current + 1) + ' / ' + total;
+
+  var prevBtn = showPrev ? '<button class="btn-prev" onclick="prevQuestion()">← 上一题</button>' : '';
+  var nextLabel = isLast ? '查看结果 →' : '下一题 →';
+
+  var optionsHtml = '';
+  for (var i = 0; i < q.options.length; i++) {
+    var opt = q.options[i];
+    optionsHtml += '<button class="option" onclick="selectOption(this, \'' + opt.type + '\')">'
+      + '<span class="option-dot"></span>'
+      + '<span>' + opt.text + '</span>'
+      + '</button>';
+  }
+
+  var html = '<div class="question-card">'
+    + '<div class="q-number">问题 ' + (current + 1) + '</div>'
+    + '<div class="q-text">' + q.text + '</div>'
+    + '<div class="options">' + optionsHtml + '</div>'
+    + '<div class="btn-row" id="btnRow">'
+    + prevBtn
+    + '<button class="btn-next" onclick="nextQuestion()">' + nextLabel + '</button>'
+    + '</div>'
+    + '</div>';
+
   document.getElementById('questionContainer').innerHTML = html;
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
 function selectOption(el, type) {
-  document.querySelectorAll('.option').forEach(o => o.classList.remove('selected'));
+  var opts = document.querySelectorAll('.option');
+  for (var i = 0; i < opts.length; i++) opts[i].classList.remove('selected');
   el.classList.add('selected');
-  selected = type;
-  const btn = document.getElementById('btnNext');
-  btn.classList.add('visible');
-  // On mobile, scroll down a bit so user sees the sticky button
-  setTimeout(() => {
-    window.scrollBy({ top: 80, behavior: 'smooth' });
-  }, 150);
+  selectedType = type;
+  document.getElementById('btnRow').classList.add('visible');
 }
 
 function nextQuestion() {
-  if (!selected) return;
-  scores[selected]++;
+  if (!selectedType) return;
+  scores[selectedType]++;
+  history.push(selectedType);
   current++;
-  
   if (current >= questions.length) {
     showLoading();
   } else {
     renderQuestion();
   }
+}
+
+function prevQuestion() {
+  if (current <= 0) return;
+  var last = history.pop();
+  if (last) scores[last]--;
+  current--;
+  renderQuestion();
 }
 
 function showLoading() {
@@ -918,75 +694,58 @@ function showLoading() {
 
 function showResult() {
   document.getElementById('loading').style.display = 'none';
-  
-  const topType = Object.entries(scores).sort((a,b) => b[1]-a[1])[0][0];
-  const r = results[topType];
-  const maxScore = questions.length;
-  
-  const scoreRows = Object.entries(scores)
-    .sort((a,b) => b[1]-a[1])
-    .map(([type, score]) => {
-      const isDominant = type === topType;
-      const pct = Math.round((score / maxScore) * 100);
-      return `
-        <div class="score-row">
-          <div class="score-label">${results[type].title.replace('型','')}</div>
-          <div class="score-track">
-            <div class="score-fill ${isDominant ? 'dominant' : ''}" data-pct="${pct}"></div>
-          </div>
-          <div class="score-num">${score}</div>
-        </div>
-      `;
-    }).join('');
 
-  document.getElementById('result').innerHTML = `
-    <div class="result-header">
-      <span class="result-emoji">${r.emoji}</span>
-      <div class="result-label">${r.label}</div>
-      <div class="result-title">${r.title}</div>
-    </div>
+  var entries = Object.entries(scores).sort(function(a, b) { return b[1] - a[1]; });
+  var topType = entries[0][0];
+  var r = results[topType];
+  var maxScore = questions.length;
 
-    <div class="result-card">
-      <h3>✦ 核心特质</h3>
-      <p>${r.core}</p>
-      <div class="traits">
-        ${r.traits.map(t => `<span class="trait">${t}</span>`).join('')}
-      </div>
-    </div>
+  var scoreRows = '';
+  for (var i = 0; i < entries.length; i++) {
+    var type = entries[i][0];
+    var score = entries[i][1];
+    var isDominant = type === topType;
+    var pct = Math.round((score / maxScore) * 100);
+    scoreRows += '<div class="score-row">'
+      + '<div class="score-label">' + results[type].title.replace('型', '') + '</div>'
+      + '<div class="score-track"><div class="score-fill ' + (isDominant ? 'dominant' : '') + '" data-pct="' + pct + '"></div></div>'
+      + '<div class="score-num">' + score + '</div>'
+      + '</div>';
+  }
 
-    <div class="result-card">
-      <h3>✦ 你的金钱模式</h3>
-      <p>${r.pattern}</p>
-    </div>
+  var traitsHtml = '';
+  for (var j = 0; j < r.traits.length; j++) {
+    traitsHtml += '<span class="trait">' + r.traits[j] + '</span>';
+  }
 
-    <div class="result-card">
-      <h3>✦ 一个小建议</h3>
-      <p>${r.advice}</p>
-    </div>
-
-    <div class="result-card score-bar-section">
-      <h3>你的各维度得分</h3>
-      ${scoreRows}
-    </div>
-
-    <button class="btn-retry" onclick="retry()">重新测试</button>
-    <p class="share-hint">截图分享给朋友，看看他们是什么类型 📱</p>
-  `;
+  document.getElementById('result').innerHTML =
+    '<div class="result-header">'
+    + '<span class="result-emoji">' + r.emoji + '</span>'
+    + '<div class="result-label">' + r.label + '</div>'
+    + '<div class="result-title">' + r.title + '</div>'
+    + '</div>'
+    + '<div class="result-card"><h3>✦ 核心特质</h3><p>' + r.core + '</p><div class="traits">' + traitsHtml + '</div></div>'
+    + '<div class="result-card"><h3>✦ 你的金钱模式</h3><p>' + r.pattern + '</p></div>'
+    + '<div class="result-card"><h3>✦ 一个小建议</h3><p>' + r.advice + '</p></div>'
+    + '<div class="result-card"><h3>你的各维度得分</h3>' + scoreRows + '</div>'
+    + '<button class="btn-retry" onclick="retryQuiz()">重新测试</button>'
+    + '<p class="share-hint">截图分享给朋友，看看他们是什么类型 📱</p>';
 
   document.getElementById('result').style.display = 'block';
 
-  // Animate bars
-  setTimeout(() => {
-    document.querySelectorAll('.score-fill').forEach(el => {
-      el.style.width = el.dataset.pct + '%';
-    });
+  setTimeout(function() {
+    var fills = document.querySelectorAll('.score-fill');
+    for (var k = 0; k < fills.length; k++) {
+      fills[k].style.width = fills[k].getAttribute('data-pct') + '%';
+    }
   }, 100);
 }
 
-function retry() {
+function retryQuiz() {
   current = 0;
   scores = { A: 0, B: 0, C: 0, D: 0, E: 0 };
-  selected = null;
+  selectedType = null;
+  history = [];
   document.getElementById('result').style.display = 'none';
   document.getElementById('result').innerHTML = '';
   document.getElementById('intro').style.display = 'block';
